@@ -1,0 +1,132 @@
+@import '~bootstrap/scss/bootstrap';
+h3 {
+  margin-bottom: 20px;
+}
+#basic-navbar-nav {
+  a {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  a.active {
+    color: #fff;
+  }
+}
+.userlist {
+  p {
+    margin-bottom: 2px;
+  }
+
+  .user {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 10px;
+    align-items: center;
+    border-color: #007bff;
+    outline: 0;
+    box-shadow: 0 0 0 0.1rem #007bff;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-bottom: 40px;
+    &.choosed {
+      box-shadow: 0 0 0 0.3rem #007bff;
+    }
+    .form-group {
+      margin-top: 1em;
+    }
+  }
+}
+.wall-post {
+  padding: 20px;
+  margin-bottom: 20px;
+  border-color: #007bff;
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem #007bff;
+  border-radius: 0.3rem;
+  .profile-picture {
+    border-radius: 50%;
+    width: 70px;
+  }
+  p {
+    margin-top: 20px;
+    font-size: 13px;
+  }
+  .post-header {
+    margin-bottom: 15px;
+  }
+  .date {
+    color: #939393;
+  }
+  h5 {
+    color: #2a5885;
+    font-weight: 500;
+  }
+}
+.friends-list {
+  img {
+    max-width: 100%;
+    border-radius: 50%;
+  }
+  .row {
+    margin-bottom: 15px;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    border-color: #007bff;
+    outline: 0;
+    box-shadow: 0 0 0 0.1rem #007bff;
+    border-radius: 0.3rem;
+    padding: 5px;
+  }
+}
+.all-friend-list {
+  .row:not(.mb-4) {
+    margin-bottom: 10px;
+    align-items: center;
+    font-size: 16px;
+    color: #2a5885;
+    font-weight: 500;
+
+    border-radius: 0.3rem;
+    padding: 5px;
+
+    &.mutual-1 {
+      background-color: #007bff21;
+      box-shadow: 0 0 0 0.1rem #007bff21;
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
+    }
+    &.mutual-2 {
+      background-color: #007bff50;
+      box-shadow: 0 0 0 0.1rem #007bff50;
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
+    }
+    &.mutual-3 {
+      background-color: #007bff9d;
+      box-shadow: 0 0 0 0.1rem #007bff9d;
+      a {
+        color: #0800ff;
+        text-decoration: none;
+      }
+    }
+    &.mutual-4 {
+      background-color: #007bffd5;
+      box-shadow: 0 0 0 0.1rem #007bffd5;
+      a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+      }
+    }
+    &.mutual-5 {
+      background-color: #007bff;
+      box-shadow: 0 0 0 0.1rem #007bff;
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+}
