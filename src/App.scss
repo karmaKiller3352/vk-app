@@ -1,4 +1,6 @@
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
+@import './sketch-theme/bootstrap.min.css';
+@import './sketch-theme/variables';
 h3 {
   margin-bottom: 20px;
 }

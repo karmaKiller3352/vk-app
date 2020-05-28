@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useContext, useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import fetchJsonp from 'fetch-jsonp';
 import Context from '../context/users/ContextUsers';
 import UserWall from '../components/UserWall';
 import MutualFriends from '../components/MutualFriends';
@@ -14,16 +14,15 @@ export default function User() {
   useEffect(() => {
     const getUserWall = async (userId) => {
       if (!userId) return false;
-      const { data } = await axios({
-        method: 'post',
-        url: requests.userWall(userId),
-      });
+      const { json } = await fetchJsonp(requests.userWall(userId));
+      console.log(await json());
+      const { response, error } = await json();
 
-      if (data.error) {
-        console.log(data.error.error_msg);
+      const data = null;
+      if (error) {
+        console.log(error.error_msg);
         setWall([]);
       } else {
-        const { response } = data;
         setWall([...response.items]);
       }
     };

@@ -7,12 +7,12 @@ function MutualFriends({ friends }) {
       {friends.map(({ first_name, last_name, photo_100, id }) => (
         <Row key={id}>
           <Col md={3}>
-            <Link to={`/user/${id}`}>
+            <Link to={`/vk-app/user/${id}`}>
               <img src={photo_100} alt={first_name} />
             </Link>
           </Col>
           <Col md={8}>
-            <Link to={`/user/${id}`}>
+            <Link to={`/vk-app/user/${id}`}>
               {first_name} {last_name}
             </Link>
           </Col>

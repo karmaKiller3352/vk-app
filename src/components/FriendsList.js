@@ -36,12 +36,12 @@ export default function FriendsList() {
       {sortedFriends.map(({ first_name, last_name, photo_50, id, match }) => (
         <Row key={id} className={match}>
           <Col md={3}>
-            <Link to={`/user/${id}`}>
+            <Link to={`/vk-app/user/${id}`}>
               <img src={photo_50} alt={first_name} />
             </Link>
           </Col>
           <Col md={8}>
-            <Link to={`/user/${id}`}>
+            <Link to={`/vk-app/user/${id}`}>
               {first_name} {last_name}
             </Link>
           </Col>

@@ -1,8 +1,9 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react';
 import { Row, Button, Col, Form } from 'react-bootstrap';
-import axios from 'axios';
+
 import UsersList from '../components/UsersList';
 import FriendsList from '../components/FriendsList';
+import fetchJsonp from 'fetch-jsonp';
 
 import Context from '../context/users/ContextUsers';
 
@@ -24,29 +25,24 @@ export default function Home() {
 
   useEffect(() => {
     async function getUserData(requestId, state) {
-      if (!requestId) return false;
-      const {
-        data: { response },
-      } = await axios({
-        method: 'post',
-        url: requests.userInfo(requestId),
-      });
+      const { json } = await fetchJsonp(requests.userInfo(requestId));
+      const { response } = await json();
+
       if (!response) {
         console.log('User with this id does not exist');
         return false;
       }
-
+      if (!response[0]) return false;
       const newUser = response[0];
       const existedId = state.every((user) => user.id !== newUser.id);
       if (existedId) {
-        const friendsRequest = await axios({
-          method: 'post',
-          url: requests.getUserFriends(newUser.id),
-        });
+        const friendsRequest = await fetchJsonp(
+          requests.getUserFriends(newUser.id)
+        );
 
-        const friendList = friendsRequest.data.response
-          ? friendsRequest.data.response.items
-          : [];
+        const pr = await friendsRequest.json();
+        const friendList = pr.response ? pr.response.items : [];
+
         const friends =
           friendList.filter(({ deactivated }) => !deactivated) || [];
         const friendsCount = friends.length;
@@ -69,7 +65,9 @@ export default function Home() {
 
     return () => setRequestId('');
   }, [state, dispatch, requests, requestId]);
-
+  useEffect(() => {
+    document.title = 'React VK App';
+  });
   useEffect(() => {
     localStorage.setItem('users', JSON.stringify(state));
   }, [state]);

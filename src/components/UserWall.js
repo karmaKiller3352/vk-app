@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Context from '../context/users/ContextUsers';
 import Attachment from '../components/Attachment';
-import axios from 'axios';
+import fetchJsonp from 'fetch-jsonp';
 
 export default function UserWall({ data, id }) {
   const { requests } = useContext(Context);
@@ -10,12 +10,9 @@ export default function UserWall({ data, id }) {
 
   useEffect(() => {
     async function getUserData() {
-      const {
-        data: { response },
-      } = await axios({
-        method: 'post',
-        url: requests.userInfo(id),
-      });
+      const { json } = await fetchJsonp(requests.userInfo(id));
+      const { response } = await json();
+
       if (!response) {
         console.log('User with this id does not exist');
         return false;

@@ -47,7 +47,7 @@ export default function UsersList() {
           </Col>
           <Col md={2}>
             <Form.Group>
-              <Link className='btn btn-primary' to={`/user/${user.id}`}>
+              <Link className='btn btn-primary' to={`/vk-app/user/${user.id}`}>
                 Перейти
               </Link>
             </Form.Group>

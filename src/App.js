@@ -12,15 +12,16 @@ import ReducerUsers from './context/users/ReducerUsers';
 import stateUsers from './context/users/StateUsers';
 
 const ACCESS_TOKEN =
+  /*'b0df5930b0df5930b0df59304cb0ae9b5abb0dfb0df5930ee6a187f1011c1f499ede2f0';*/
   '4b7861134b7861134b786113794b09feea44b784b78611315d6ecd19751dc711d47446d';
 
 export const requests = {
   userInfo: (id) =>
-    `/method/users.get?&user_ids=${id}&fields=photo_100,bdate,sex&access_token=${ACCESS_TOKEN}&v=5.89`,
+    `https://api.vk.com/method/users.get?&user_ids=${id}&fields=photo_100,bdate,sex&access_token=${ACCESS_TOKEN}&v=5.89`,
   userWall: (id) =>
-    `/method/wall.get?&owner_id=${id}&access_token=${ACCESS_TOKEN}&v=5.103`,
+    `https://api.vk.com/method/wall.get?&owner_id=${id}&access_token=${ACCESS_TOKEN}&v=5.103`,
   getUserFriends: (id) =>
-    `/method/friends.get?&user_id=${id}&order=name&fields=photo_50&access_token=${ACCESS_TOKEN}&v=5.89`,
+    `https://api.vk.com/method/friends.get?&user_id=${id}&order=name&fields=photo_50&access_token=${ACCESS_TOKEN}&v=5.89`,
 };
 
 function App() {
@@ -31,8 +32,8 @@ function App() {
         <NavbarCustom />
         <div className='container pt-4'>
           <Switch>
-            <Route path={'/'} exact component={Home} />
-            <Route path={'/user/:id'} component={User} />
+            <Route path={'/vk-app/'} exact component={Home} />
+            <Route path={'/vk-app/user/:id'} component={User} />
           </Switch>
         </div>
       </BrowserRouter>
